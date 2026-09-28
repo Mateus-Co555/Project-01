@@ -1,0 +1,13 @@
+{% extends 'learning_logs/base.html'%}
+
+{% block content%}
+
+    <form method='POST' action="{% url 'login' %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button name='submit'>Login</button>
+        <input name='next' type='hidden' value="{% url 'index' %}">
+    </form>
+
+
+{% endblock content%}

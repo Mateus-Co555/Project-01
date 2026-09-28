@@ -1,0 +1,21 @@
+{% extends 'learning_logs/base.html'%}
+{% block content%}
+    <h3>{{topic}}</h3>
+    <p>Entries:</p>
+    <ul>
+        {% for entry in entry %}
+            <li>{{entry.date_added}}   <a href="{% url 'delete_entry' entry.id%}">Delete Entry</a></li>
+            
+            <p>{{entry.text}}
+
+                <a href="{% url 'edit_entry' entry.id  %}">Edit entry</a>
+            </p>
+        {% empty %}
+            <p>There're not entries</p>
+        {% endfor%}
+    </ul>
+    
+    <a href = "{% url 'new_entry' topic.id %}">Create a new entry</a>
+    <p><a href = "{% url 'delete_topic' topic.id %}">Delete topic</a></p>
+
+{% endblock content%}
